@@ -77,12 +77,14 @@ class Client {
                 return;
             }
             this.debug(`<<< ${data}`);
+            console.log('webstomp-client::onmessage ==> data', data);
             // Handle STOMP frames received from the server
             // The unmarshall function returns the frames parsed and any remaining
             // data from partial frames.
             const unmarshalledData = Frame.unmarshall(this.partialData + data);
             this.partialData = unmarshalledData.partial;
             unmarshalledData.frames.forEach(frame => {
+                console.log('webstomp-client::onmessage ==> frame', frame);
                 switch (frame.command) {
                     // [CONNECTED Frame](http://stomp.github.com/stomp-specification-1.1.html#CONNECTED_Frame)
                     case 'CONNECTED':
