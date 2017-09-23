@@ -66,7 +66,7 @@ class Client {
         this.connectCallback = connectCallback;
         this.debug('Opening Web Socket...');
         this.ws.onmessage = (evt) => {
-            console.log('webclient::onmessage', evt);
+            console.log('webstomp-client::onmessage ==> evt', evt);
             let data = evt.data;
             if (evt.data instanceof ArrayBuffer) {
                 data = typedArrayToUnicodeString(new Uint8Array(evt.data));
