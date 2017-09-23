@@ -265,6 +265,7 @@ var Client = function () {
             this.connectCallback = connectCallback;
             this.debug('Opening Web Socket...');
             this.ws.onmessage = function (evt) {
+                console.log('webclient::onmessage', evt);
                 var data = evt.data;
                 if (evt.data instanceof ArrayBuffer) {
                     data = (0, _utils.typedArrayToUnicodeString)(new Uint8Array(evt.data));
